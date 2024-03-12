@@ -139,20 +139,21 @@ class Program
 /*
 // Task 6
 
+
 class Program
 {
     static void Main(string[] args)
     {
-
-        TestRoundTowardsZero(1.8);
-        TestRoundTowardsZero(2.0);
-        TestRoundTowardsZero(1.2);
-        TestRoundTowardsZero(2.8);
+        double number1 = 1.4;
+        double number2 = 1.5;
+        Console.WriteLine($"Numbers before function {number1} and {number2}");
+        Console.WriteLine($"Numbers after function {RoundTowardsZero(number1)} and {RoundTowardsZero(number2)}"); 
     }
 
     static double RoundTowardsZero(double X)
     {
-        if (X >= 0)
+        double lastdigit = (X*10 % 10);
+        if (lastdigit < 5)
         {
             return Math.Floor(X);
         }
@@ -160,11 +161,7 @@ class Program
         {
             return Math.Ceiling(X);
         }
-    }
-
-    static void TestRoundTowardsZero(double number)
-    {
-        Console.WriteLine($"Rounded towards zero: {number} => {RoundTowardsZero(number)}");
+        
     }
 }
 */
