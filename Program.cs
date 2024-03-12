@@ -109,26 +109,26 @@ class Program
 /*
 // Task 5
 
-class Program
+
+class Swapp
 {
     static void Main(string[] args)
     {
-        int a = 5;
-        int b = 10;
+        int a, b;
+        a = 1;
+        b = 5;
 
-        Console.WriteLine($"Before swapping: a = {a}, b = {b}");
-
-        // Call the function to swap values
-        SwapInts(ref a, ref b);
-
-        Console.WriteLine($"After swapping: a = {a}, b = {b}");
+        Console.WriteLine($"Data befor swapping a={a}, b={b}");
+        SwappFunct(ref a, ref b);
+        Console.WriteLine($"Data after swapping a={a}, b={b}");
     }
 
-    static void SwapInts(ref int x, ref int y)
+    static void SwappFunct(ref int i, ref int j)
     {
-        int temp = x;
-        x = y;
-        y = temp;
+        int new_v = i;
+        i = j;
+        j = new_v;
+
     }
 }
 */
