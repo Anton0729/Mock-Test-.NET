@@ -1,296 +1,62 @@
-﻿using System;
 /*
-// Task 3
+Write one program, that reads a series of integer numbers from the keyboard and performs the tasks de-
+scribed below. Each number can be entered as a separate line of text (with the ENTER key pressed at the
+end). The entering of numbers should be stopped when the user enters a non-number, e.g. an empty line
+or a text like "stop".
 
+After reading the numbers the program should display three lines of text containing information de-
+scribed below. Each of the three points • should result in one line of text. Printing of the results must
+occur after all the numbers have been read from the keyboard.
 
-class AddressProgram
-{
-    static void Main(string[] args)
-    {
-        char addresseeType = AskYesNoQuestion("Is the addressee a company? [y/n]");
+Note: You can use course materials and web search during the test, but do not use any code- gen-
+erating tool (Copilot, ChatGPT, etc.). Using such tools results in getting 0 points from the test.
 
-        string salutation = "";
-        string firstName = "";
-        string lastName = "";
-        string companyName = "";
-        string streetName = "";
-        string streetNumber = "";
-        string contactInfo = "";
+how many of the entered numbers are not divisible by 2 nor by 5?
 
-        if (addresseeType == 'y')
-        {
-            companyName = ReadField("Company name: ");
-            streetName = ReadField("Street name: ");
-            streetNumber = ReadField("Street number: ");
-            contactInfo = ReadField("Contact info: ");
-        }
-        else
-        {
-            salutation = ReadField("Salutation: ");
-            firstName = ReadField("First name: ");
-            lastName = ReadField("Last name: ");
-            streetName = ReadField("Street name: ");
-            streetNumber = ReadField("Street number: ");
-            contactInfo = ReadField("Contact info: ");
-        }
+how many of the entered numbers are larger than 15 and at the same time divisible
+by 9?
 
-        Console.WriteLine("\nAddress Information:");
-        if (addresseeType == 'y')
-        {
-            DisplayField("Company name", companyName);
-        }
-        else
-        {
-            DisplayField("Salutation", salutation);
-            DisplayField("First name", firstName);
-            DisplayField("Last name", lastName);
-        }
-        DisplayField("Street", $"{streetName} {streetNumber}");
-        DisplayField("Contact info", contactInfo);
-
-        WaitForAnyKey();
-    }
-
-    static string ReadField(string fieldName)
-    {
-        Console.Write(fieldName);
-        return Console.ReadLine();
-    }
-
-    static void DisplayField(string fieldName, string fieldValue)
-    {
-        Console.WriteLine($"{fieldName}: {fieldValue}");
-    }
-
-    static char AskYesNoQuestion(string question)
-    {
-        Console.Write(question);
-        char response = char.ToLower(Console.ReadKey().KeyChar);
-        Console.WriteLine();
-        return response;
-    }
-
-    static void WaitForAnyKey()
-    {
-        Console.WriteLine("\nPress any key to end the program...");
-        Console.ReadKey();
-    }
-}
+calculate the average of the two values mentioned above.
 */
+using System;
 
+class Program {
+    static void Main(string[] args){
+        int totalCount = 0;
+        int countTask1 = 0;
+        int countTask2 = 0;
+        int sum = 0;
 
-/*
-// Task 4
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        int minResult = Min(5, 10, 3);
-        Console.WriteLine($"Minimum value is: {minResult}");
-
-        int maxResult = Max(5, 10, 3);
-        Console.WriteLine($"Maximum value is: {maxResult}");
-    }
-
-    static int Min(int n1, int n2, int n3)
-    {
-        return Math.Min(Math.Min(n1, n2), n3);
-    }
-
-    static int Max(int n1, int n2, int n3)
-    {
-        return Math.Max(Math.Max(n1, n2), n3);
-    }
-}
-*/
-
-
-/*
-// Task 5
-
-
-class Swapp
-{
-    static void Main(string[] args)
-    {
-        int a, b;
-        a = 1;
-        b = 5;
-
-        Console.WriteLine($"Data befor swapping a={a}, b={b}");
-        SwappFunct(ref a, ref b);
-        Console.WriteLine($"Data after swapping a={a}, b={b}");
-    }
-
-    static void SwappFunct(ref int i, ref int j)
-    {
-        int new_v = i;
-        i = j;
-        j = new_v;
-
-    }
-}
-*/
-
-
-
-
-/*
-// Task 6
-
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        double number1 = 1.4;
-        double number2 = 1.5;
-        Console.WriteLine($"Numbers before function {number1} and {number2}");
-        Console.WriteLine($"Numbers after function {RoundTowardsZero(number1)} and {RoundTowardsZero(number2)}"); 
-    }
-
-    static double RoundTowardsZero(double X)
-    {
-        double lastdigit = (X*10 % 10);
-        if (lastdigit < 5)
+        Console.WriteLine("Enter numbers or type non-number to stop");
+        while (true)
         {
-            return Math.Floor(X);
-        }
-        else
-        {
-            return Math.Ceiling(X);
-        }
-        
-    }
-}
-*/
+            string input = Console.ReadLine();
+            if (int.TryParse(input, out int number))
+            {
+                totalCount++;
 
-/*
-// Task 7
-class DecisionTreeProgramm
-{
-    static void Main(string[] args)
-    {
-        string acct_stat = EnterAttribute("acct_stat");
-
-        switch (acct_stat)
-        {
-            case "low":
-                double amount = int.Parse(EnterAttribute("amount"));
-                if (amount > 5000)
+                if (number % 2 != 0 && number % 5 != 0)
                 {
-                    Console.WriteLine("Reject");
-                } else
-                {
-                    Console.WriteLine("Grant");
+                    countTask1++;
                 }
-                break;
 
-            case "debt":
-                string working = EnterAttribute("working: 'yes', 'no'");
-                if (working == "yes")
+                if (number > 15 && number % 9 == 0)
                 {
-                    Console.WriteLine("Grant");
-                } else 
-                {
-                    string reason_not_working = EnterAttribute("reason not working: 'retired', 'lost job'");
-                    if (reason_not_working == "lost job")
-                    {
-                        Console.WriteLine("Reject");
-                    } else
-                    {
-                        Console.WriteLine("Grant");
-                    }
+                    countTask2++;
+                    sum += number;
                 }
-                break;
 
-            case "high":
-                Console.WriteLine("Grant");
+            }
+            else {
                 break;
-            default:
-                Console.WriteLine("Invalid input");
-                break;
+            }
         }
-    }
 
-    static string EnterAttribute(string attribute_name)
-    {
-        Console.WriteLine($"Enter the value of {attribute_name}");
-        string acct_stat = Console.ReadLine().ToLower();
-        return acct_stat;
-    }
-} 
-*/
+        double average = (double)(countTask1 + countTask2) / 2;
 
+        Console.WriteLine($"Numbers not divisible by 2 or 5: {countTask1}");
+        Console.WriteLine($"Numbers larger than 15 and divisible by 9: {countTask2}");
 
-/*
-// Task 8
-
-class Program
-{
-    static void Main()
-    {
-        double number1 = ReadNumber(1);
-        char opeartion = ChooseOperation();
-        double number2 = ReadNumber(2);
-
-        double result = CalculateResult(number1, number2, opeartion);
-        DisplayResult(number1, number2, opeartion, result);
-    }
-
-    static double ReadNumber(int Number)
-    {
-        Console.WriteLine($"Enter the argument number {Number}");
-        double number = double.Parse(Console.ReadLine());
-        return number;
-    }
-
-    static char ChooseOperation()
-    {
-        Console.WriteLine("Choose the operation: +, -, *, /, ^");
-        ConsoleKeyInfo keyInfo = Console.ReadKey();
-        Console.WriteLine();
-        return keyInfo.KeyChar;
-    }
-
-    static double CalculateResult(double number1, double number2, char operation)
-    {
-        double result = 0;
-        switch (operation)
-        {
-            case '+':
-                result = number1 + number2;
-                break;
-            case '-':
-                result = number1 - number2;
-                break;
-            case '*':
-                result = number1 * number2;
-                break;
-            case '/':
-                if (number2 == 0)
-                {
-                    Console.WriteLine("Invalid division by 0!");
-                    break;
-                } else
-                {
-                    result = number1 / number2;
-                    break;
-                }
-            case '^':
-                result = Math.Pow(number1, number2);
-                break;
-            default:
-                Console.WriteLine("Invalid operation!");
-                break;
-        }
-        return result;
-    }
-
-    static void DisplayResult(double number1, double number2, char operation, double result)
-    {
-        Console.WriteLine($"{number1} {operation} {number2} = {result}");
+        Console.WriteLine($"Average: {average}");
     }
 }
-*/
